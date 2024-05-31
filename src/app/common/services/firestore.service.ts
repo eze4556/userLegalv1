@@ -13,7 +13,9 @@ import {
   DocumentData,
   WithFieldValue,
   UpdateData,
-  getDocs
+  getDocs,
+  query,
+  where
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -21,7 +23,6 @@ const { v4: uuidv4 } = require('uuid');
 
 import * as bcrypt from 'bcryptjs';
 import { UserI } from '../models/users.models';
-
 
 // Convertidor genérico para Firestore
 const converter = <T>() => ({
@@ -116,10 +117,8 @@ export class FirestoreService {
     }
   }
 
-
-
-//obtener el documento del usuario
- public async getDocumentById<T>(collectionPath: string, documentId: string): Promise<DocumentData | undefined> {
+  // Obtener el documento del usuario
+  public async getDocumentById<T>(collectionPath: string, documentId: string): Promise<DocumentData | undefined> {
     try {
       const docRef = doc(this.firestore, collectionPath, documentId);
       const docSnap = await getDoc(docRef);
@@ -130,21 +129,36 @@ export class FirestoreService {
     }
   }
 
-
+  // Login del usuario basado en dni y password
   async loginUser(dni: string, password: string): Promise<UserI | undefined> {
     try {
-      const userDoc = await this.getDocument<UserI>(`Usuarios/${dni}`);
+      // Consulta a la colección Usuarios por el campo dni
+      const userCollection = collection(this.firestore, 'Usuarios');
+      const q = query(userCollection, where('dni', '==', dni));
+      const querySnapshot = await getDocs(q);
 
-      if (userDoc && userDoc['exists']()) {
-        const user = userDoc['data']();
-        const validPassword = await bcrypt.compare(password, user!.password);
+      if (!querySnapshot.empty) {
+        const userDoc = querySnapshot.docs[0];
+        const user = userDoc.data() as UserI;
 
-        if (validPassword) {
-          return user;
+        console.log('User found:', user); // Debug log for user data
+
+        if(password === user.password){
+          const validPassword = true
+          console.log('Password comparison result:', validPassword); // Debug log for password comparison
+          return user
         } else {
-          return undefined;
+          return undefined
         }
+        // const validPassword = await bcrypt.compare(password, user.password);
+
+        // if (validPassword) {
+        //   return user;
+        // } else {
+        //   return undefined;
+        // }
       } else {
+        console.log('No user found with given DNI'); // Debug log if no user found
         return undefined;
       }
     } catch (error) {
@@ -152,7 +166,4 @@ export class FirestoreService {
       throw error;
     }
   }
-
-
-
 }

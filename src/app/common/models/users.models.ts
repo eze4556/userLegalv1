@@ -1,5 +1,9 @@
 export interface UserI {
-    nombre: string;
-    edad?: number;
-    id: string;
+  id: string;
+  nombre: string;
+  apellido: string;
+  direccion: string;
+  dni: string;
+  edad?: number;
+  password: string;
 }
