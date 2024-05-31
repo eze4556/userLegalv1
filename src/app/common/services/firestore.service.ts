@@ -19,6 +19,9 @@ import { Observable } from 'rxjs';
 
 const { v4: uuidv4 } = require('uuid');
 
+import * as bcrypt from 'bcryptjs';
+import { UserI } from '../models/users.models';
+
 
 // Convertidor genérico para Firestore
 const converter = <T>() => ({
@@ -128,6 +131,27 @@ export class FirestoreService {
   }
 
 
+  async loginUser(dni: string, password: string): Promise<UserI | undefined> {
+    try {
+      const userDoc = await this.getDocument<UserI>(`Usuarios/${dni}`);
+
+      if (userDoc && userDoc['exists']()) {
+        const user = userDoc['data']();
+        const validPassword = await bcrypt.compare(password, user!.password);
+
+        if (validPassword) {
+          return user;
+        } else {
+          return undefined;
+        }
+      } else {
+        return undefined;
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      throw error;
+    }
+  }
 
 
 
