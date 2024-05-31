@@ -42,34 +42,23 @@ constructor(
   }
 
 
- async login() {
+  async login() {
     if (this.loginForm.valid) {
       const { dni, password } = this.loginForm.value;
 
       try {
-        const credentials = await this.firestoreService.getUserCredentials(dni);
+        const user = await this.firestoreService.loginUser(dni, password);
+        if (user) {
+          console.log('Inicio de sesión exitoso:', user);
+          this.loginSuccess = true;
+          await this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso.'); // Mostrar alerta de éxito
 
-        if (credentials) {
-          const validPassword = await bcrypt.compare(password, credentials.password);
-
-          if (validPassword) {
-            console.log('Inicio de sesión exitoso:', credentials);
-            this.loginSuccess = true;
-            await this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso.');
-
-
-            localStorage.setItem('user', JSON.stringify(credentials));
-
-            setTimeout(() => {
-              this.router.navigateByUrl('/home');
-            }, 1000); 
-          } else {
-            this.loginError = true;
-            this.mostrarAlertaError('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
-          }
+          setTimeout(() => {
+            this.router.navigateByUrl('/home');
+          }, 1000);
         } else {
           this.loginError = true;
-          this.mostrarAlertaError('Usuario no encontrado.');
+          this.mostrarAlertaError('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
         }
       } catch (error) {
         console.error('Error al iniciar sesión:', error);
@@ -79,6 +68,7 @@ constructor(
       this.mostrarAlertaError('Por favor, completa todos los campos correctamente.');
     }
   }
+
 
   // Función para mostrar una alerta de error
   async mostrarAlertaError(mensaje: string) {
