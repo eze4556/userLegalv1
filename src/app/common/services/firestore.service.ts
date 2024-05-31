@@ -17,6 +17,8 @@ import {
   query,
   where
 } from '@angular/fire/firestore';
+
+
 import { Observable } from 'rxjs';
 
 const { v4: uuidv4 } = require('uuid');
@@ -39,6 +41,8 @@ const docWithConverter = <T>(firestore: Firestore, path: string) =>
 export class FirestoreService {
 
   private firestore: Firestore = inject(Firestore);
+
+
 
   constructor() { }
 
@@ -162,7 +166,7 @@ export class FirestoreService {
         return undefined;
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Error al obtener credenciales del usuario:", error);
       throw error;
     }
   }
