@@ -15,12 +15,15 @@ import {
   UpdateData,
   getDocs
 } from '@angular/fire/firestore';
+
+
 import { Observable } from 'rxjs';
 
 const { v4: uuidv4 } = require('uuid');
 
 import * as bcrypt from 'bcryptjs';
 import { UserI } from '../models/users.models';
+
 
 
 // Convertidor genérico para Firestore
@@ -38,6 +41,8 @@ const docWithConverter = <T>(firestore: Firestore, path: string) =>
 export class FirestoreService {
 
   private firestore: Firestore = inject(Firestore);
+
+
 
   constructor() { }
 
@@ -131,27 +136,28 @@ export class FirestoreService {
   }
 
 
-  async loginUser(dni: string, password: string): Promise<UserI | undefined> {
+  async getUserCredentials(userId: string): Promise<{ dni: string, password: string } | undefined> {
     try {
-      const userDoc = await this.getDocument<UserI>(`Usuarios/${dni}`);
+      const userDocRef = doc(this.firestore, `Usuarios/${userId}`);
+      const userDoc = await getDoc(userDocRef);
 
-      if (userDoc && userDoc['exists']()) {
-        const user = userDoc['data']();
-        const validPassword = await bcrypt.compare(password, user!.password);
-
-        if (validPassword) {
-          return user;
-        } else {
-          return undefined;
-        }
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        return {
+          dni: userData?.['dni'] || '',
+          password: userData?.['password'] || ''
+        };
       } else {
         return undefined;
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Error al obtener credenciales del usuario:", error);
       throw error;
     }
   }
+
+
+
 
 
 
