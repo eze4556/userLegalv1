@@ -19,12 +19,17 @@ import {
 } from '@angular/fire/firestore';
 
 
+
+
+
 import { Observable } from 'rxjs';
 
 const { v4: uuidv4 } = require('uuid');
 
-import * as bcrypt from 'bcryptjs';
+
 import { UserI } from '../models/users.models';
+
+
 
 // Convertidor genérico para Firestore
 const converter = <T>() => ({
@@ -41,7 +46,7 @@ const docWithConverter = <T>(firestore: Firestore, path: string) =>
 export class FirestoreService {
 
   private firestore: Firestore = inject(Firestore);
-
+   
 
 
   constructor() { }
@@ -145,11 +150,13 @@ export class FirestoreService {
         const userDoc = querySnapshot.docs[0];
         const user = userDoc.data() as UserI;
 
-        console.log('User found:', user); // Debug log for user data
+        console.log('User found:', user);
 
         if(password === user.password){
+          localStorage.setItem('userId', user.id);
+           localStorage.setItem('userDni', user.dni);
           const validPassword = true
-          console.log('Password comparison result:', validPassword); // Debug log for password comparison
+          console.log('Password comparison result:', validPassword);
           return user
         } else {
           return undefined
@@ -162,7 +169,7 @@ export class FirestoreService {
         //   return undefined;
         // }
       } else {
-        console.log('No user found with given DNI'); // Debug log if no user found
+        console.log('No user found with given DNI');
         return undefined;
       }
     } catch (error) {
@@ -170,4 +177,7 @@ export class FirestoreService {
       throw error;
     }
   }
+
+
+
 }

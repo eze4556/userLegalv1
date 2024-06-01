@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "775859610688",
     appId: "1:775859610688:web:af2da5023833562c5eeba5",
     measurementId: "G-DVHFJGDYQ1"
-  }
+  },
+  jwtSecret: "6gUjaumz67K/ItWGODOqJR83JMdOUMIGQN9D/y1Ms9Yt8UIFy3oU8mG+KNwFywC6ngwEtHFjhejBsU/Dntm3ll0rrL2oNywrFZmR33QLtH/NjV1pxc4wDV8dpfEp7iwISGTBBvhh0khSCdpPgY6hg3docSqxqCSteXgiwvroBTQk88z61yEPcVTZ1SguM2eQuquxycRcHr6NZivhmnQQ/Z5YU+gpV0aquOotNG/YGyR51sG0MtxGI6o6cjU28/S1kmv/n0LJr00q/yoQPtbq7m7lwwMr2+8iOPEtOi+FpqXCNfgfIhwXr8vZUo2hdZPBrietcJzQ+WJ917Sd5Z0OUw=="
 };
 
 /*
