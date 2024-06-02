@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonList, IonItem, IonCard, IonInput, IonSpinner, IonButtons, IonButton, IonIcon, IonImg, IonCol, IonRow, IonBackButton, IonGrid } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { IoniconsModule } from '../common/modules/ionicons.module';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class HomePage {
 
 
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
-
+  navigateToCertificacion() {
+    this.router.navigate(['/certificacion']);
+  }
 }
