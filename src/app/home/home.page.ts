@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonList, IonItem, IonCard, IonInput, IonSpinner, IonButtons, IonButton, IonIcon, IonImg, IonCol, IonRow, IonBackButton, IonGrid } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { IoniconsModule } from '../common/modules/ionicons.module';
+import { Router } from '@angular/router';
+import { AlertController, IonicModule } from '@ionic/angular';
 
 
 @Component({
@@ -20,8 +22,27 @@ export class HomePage {
 
 
 
-  constructor() {
+  constructor( private router: Router,
+    private alertController: AlertController,) {
 
+  }
+
+   async logout() {
+
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    this.router.navigateByUrl('/login');
+    this.mostrarAlerta('Sesión cerrada correctamente.');
+  }
+
+
+  async mostrarAlerta(mensaje: string) {
+    const alert = await this.alertController.create({
+      header: 'se ha cerrado la sesión',
+      message: mensaje,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
 

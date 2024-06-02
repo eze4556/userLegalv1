@@ -11,9 +11,17 @@ export const routes: Routes = [
     loadComponent: () => import('../app/views/login/login.component').then((m) => m.LoginComponent),
   },
 
+    {
+    path: 'perfil',
+    loadComponent: () => import('../app/views/perfil/perfil.component').then((m) => m.PerfilComponent),
+  },
+
+
+
+
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];
