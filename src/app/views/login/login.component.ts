@@ -54,7 +54,7 @@ constructor(
         const user = await this.firestoreService.loginUser(dni, password);
         if (user) {
           const userId = localStorage.getItem('userId');
-          console.log('Inicio de sesión exitoso:', user);
+          console.log('Inicio de sesión exitoso:', userId);
           this.loginSuccess = true;
           await this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso.');
 
