@@ -28,10 +28,15 @@
     "@capacitor/keyboard": "5.0.8",
     "@capacitor/status-bar": "5.0.7",
     "@ionic/angular": "^7.5.0",
-    "bcryptjs": "^2.4.3",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "ionicons": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "process": "^0.11.10",
     "rxjs": "~7.8.0",
+    "stream-browserify": "^3.0.0",
     "tslib": "^2.3.0",
+    "util": "^0.12.5",
     "uuid": "^9.0.1",
     "zone.js": "~0.14.2"
   },
@@ -49,6 +54,7 @@
     "@ionic/angular-toolkit": "^9.0.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/jasmine": "~5.1.0",
+    "@types/jsonwebtoken": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^7.26.0",
@@ -62,7 +68,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+     "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0"
   },
   "description": "An Ionic project"
 }

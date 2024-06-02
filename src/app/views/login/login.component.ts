@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular
 import { Router } from '@angular/router';
 import { AlertController, IonicModule } from '@ionic/angular';
 import * as bcrypt from 'bcryptjs';
+import { Auth } from '@angular/fire/auth';
+
 
 
 @Component({
@@ -33,7 +35,9 @@ constructor(
     private firestoreService: FirestoreService,
     private router: Router,
     private alertController: AlertController,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: Auth
+
   ) {
     this.loginForm = this.fb.group({
       dni: ['', Validators.required],
@@ -49,9 +53,10 @@ constructor(
       try {
         const user = await this.firestoreService.loginUser(dni, password);
         if (user) {
+          const userId = localStorage.getItem('userId');
           console.log('Inicio de sesión exitoso:', user);
           this.loginSuccess = true;
-          await this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso.'); // Mostrar alerta de éxito
+          await this.mostrarAlerta('Éxito', 'Inicio de sesión exitoso.');
 
           setTimeout(() => {
             this.router.navigateByUrl('/home');
@@ -68,6 +73,9 @@ constructor(
       this.mostrarAlertaError('Por favor, completa todos los campos correctamente.');
     }
   }
+
+
+
 
 
   // Función para mostrar una alerta de error
