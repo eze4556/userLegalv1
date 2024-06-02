@@ -179,16 +179,5 @@ export class FirestoreService {
   }
 
 
-  async getUserData(userId: string): Promise<UserI | undefined> {
-    try {
-      const userDocRef = doc(this.firestore, `Usuarios/${userId}`).withConverter(converter<UserI>());
-      const userDocSnap = await getDoc(userDocRef);
-      return userDocSnap.exists() ? userDocSnap.data() : undefined;
-    } catch (error) {
-      console.error("Error al recuperar los datos del usuario:", error);
-      throw error;
-    }
-  }
-
 
 }
