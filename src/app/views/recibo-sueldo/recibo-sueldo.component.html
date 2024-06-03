@@ -1,7 +1,7 @@
 <ion-content>
-  <ion-card *ngFor="let doc of facturacionDocs$ | async">
+  <ion-card *ngFor="let doc of reciboSueldoDocs$ | async">
     <ion-card-header>
-      <ion-card-title>Factura: {{ doc.facturas }}</ion-card-title>
+      <ion-card-title>Recibo de Sueldo: {{ doc.mes }}/{{ doc.anio }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <div *ngIf="doc.pdf">

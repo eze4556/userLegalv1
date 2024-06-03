@@ -26,10 +26,10 @@
     </ion-row>
     <ion-row>
       <ion-col  size-sm="6">
-        <ion-button expand="block" class="button-square" >INFORMACIÓN PERSONAL</ion-button>
+        <ion-button expand="block" class="button-square">INFORMACIÓN PERSONAL</ion-button>
       </ion-col>
       <ion-col  size-sm="6">
-        <ion-button expand="block" class="button-square" >FACTURACIÓN</ion-button>
+        <ion-button expand="block" class="button-square" (click)="navigateToFacturacion()">FACTURACIÓN</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -37,7 +37,7 @@
         <ion-button expand="block" class="button-square" >DECLARACIÓN JURADA (DJ)</ion-button>
       </ion-col>
       <ion-col  size-sm="6">
-        <ion-button expand="block" class="button-square" >PLANES DE PAGO</ion-button>
+        <ion-button expand="block" class="button-square" (click)="navigateToPlanPago()" >PLANES DE PAGO</ion-button>
       </ion-col>
     </ion-row>
      <ion-row>
@@ -45,7 +45,7 @@
         <ion-button expand="block" class="button-square" >F931</ion-button>
       </ion-col>
       <ion-col  size-sm="6">
-        <ion-button expand="block" class="button-square" >RECIBO DE SUELDO</ion-button>
+        <ion-button expand="block" class="button-square" (click)="navigateToReciboSueldo()">RECIBO DE SUELDO</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

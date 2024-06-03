@@ -28,4 +28,16 @@ export class HomePage {
   navigateToCertificacion() {
     this.router.navigate(['/certificacion']);
   }
+
+  navigateToFacturacion() {
+    this.router.navigate(['/facturacion']);
+  }
+
+  navigateToPlanPago() {
+    this.router.navigate(['/planpago']);
+  }
+
+  navigateToReciboSueldo() {
+    this.router.navigate(['/recibosueldo']);
+  }
 }
