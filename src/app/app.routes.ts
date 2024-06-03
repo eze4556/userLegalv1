@@ -34,6 +34,18 @@ export const routes: Routes = [
 
 
   {
+    path: 'facturacion',
+    loadComponent: () => import('./views/facturacion/facturacion.component').then((m) => m.FacturacionComponent),
+  },
+  {
+    path: 'planpago',
+    loadComponent: () => import('./views/plan-pago/plan-pago.component').then((m) => m.PlanPagoComponent),
+  },
+  {
+    path: 'recibosueldo',
+    loadComponent: () => import('./views/recibo-sueldo/recibo-sueldo.component').then((m) => m.ReciboSueldoComponent),
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
