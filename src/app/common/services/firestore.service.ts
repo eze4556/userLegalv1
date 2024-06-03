@@ -177,24 +177,7 @@ export class FirestoreService {
       throw error;
     }
   }
-  async getUniqueYears(userId: string): Promise<string[]> {
-    const certIngresoCollection = collection(this.firestore, `Usuarios/${userId}/certIngreso`);
-    const querySnapshot = await getDocs(certIngresoCollection);
 
-    const yearsSet = new Set<string>();
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      if (data && data['anio']) {
-        yearsSet.add(data['anio']);
-      }
-    });
 
-    return Array.from(yearsSet);
-  }
 
-  getCertificacionIngresosByYear(userId: string, year: string): Observable<any[]> {
-    const certIngresoCollection = collection(this.firestore, `Usuarios/${userId}/certIngreso`);
-    const q = query(certIngresoCollection, where('anio', '==', year));
-    return collectionData(q, { idField: 'id' }) as Observable<any[]>;
-  }
 }

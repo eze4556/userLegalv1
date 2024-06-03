@@ -14,6 +14,14 @@ export const routes: Routes = [
     path: 'certificacion',
     loadComponent: () => import('./views/cert-ingresos/cert-ingresos.component').then((m) => m.CertIngresosComponent),
   },
+    {
+    path: 'perfil',
+    loadComponent: () => import('../app/views/perfil/perfil.component').then((m) => m.PerfilComponent),
+  },
+
+
+
+
   {
     path: 'facturacion',
     loadComponent: () => import('./views/facturacion/facturacion.component').then((m) => m.FacturacionComponent),
@@ -28,7 +36,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];
