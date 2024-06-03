@@ -1,4 +1,4 @@
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButtons, IonTitle, IonBackButton, IonToolbar, IonHeader } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../common/services/firestore.service';
@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './recibo-sueldo.component.html',
   styleUrls: ['./recibo-sueldo.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonHeader, IonToolbar, IonBackButton, IonTitle, IonButtons, CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
 })
 export class ReciboSueldoComponent implements OnInit {
   reciboSueldoDocs$: Observable<any[]>;

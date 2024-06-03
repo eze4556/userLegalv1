@@ -1,6 +1,11 @@
+// ion-content {
+//   --background: #f4f5f8; // Color de fondo gris claro
+// }
+
 ion-content {
-  --background: #f4f5f8; // Color de fondo gris claro
+  --background: hsla(24, 100%, 1%, 0.966); // Color de fondo gris claro
 }
+
 
 .afip-card {
   margin: 20px auto;
@@ -9,7 +14,7 @@ ion-content {
 }
 
 .afip-card-header {
-  background-color: #3880ff;
+  background-color: #CFB53B;
   color: white;
 }
 
@@ -29,3 +34,5 @@ ion-content {
 .afip-value {
   text-align: end;  // Alinea el valor a la derecha
 }
+
+

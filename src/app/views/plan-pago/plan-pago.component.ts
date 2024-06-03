@@ -1,4 +1,4 @@
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonTitle, IonButtons, IonToolbar, IonBackButton, IonHeader } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../common/services/firestore.service';
@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './plan-pago.component.html',
   styleUrls: ['./plan-pago.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonHeader, IonBackButton, IonToolbar, IonButtons, IonTitle, CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
 })
 export class PlanPagoComponent implements OnInit {
   planPagoDocs$: Observable<any[]>;

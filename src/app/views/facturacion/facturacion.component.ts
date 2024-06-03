@@ -1,4 +1,4 @@
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../common/services/firestore.service';
@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './facturacion.component.html',
   styleUrls: ['./facturacion.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonTitle, IonBackButton, IonButtons, IonToolbar, IonHeader, CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
 })
 export class FacturacionComponent implements OnInit {
   facturacionDocs$: Observable<any[]>;

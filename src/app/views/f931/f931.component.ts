@@ -37,6 +37,8 @@ import { AlertController,    IonicModule } from '@ionic/angular';
 import * as bcrypt from 'bcryptjs';
 import { Auth } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 
 @Component({
   selector: 'app-f931',
@@ -69,8 +71,9 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     CommonModule,
     IonCardHeader,
-      IonCardTitle,
-      IonCardContent
+    IonCardTitle,
+    IonCardContent,
+    PdfViewerModule
   ],
 })
 export class F931Component implements OnInit {
@@ -92,6 +95,8 @@ export class F931Component implements OnInit {
       console.error('No se encontró userId en localStorage');
     }
   }
+
+
 
   verPdf(url: string) {
   window.open(url, '_blank');
