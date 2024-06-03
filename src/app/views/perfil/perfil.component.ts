@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonList, IonItem, IonCard, IonInput, IonSpinner, IonButtons, IonButton, IonIcon, IonImg, IonCol, IonRow, IonBackButton, IonGrid } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar,IonCardContent,IonCardHeader,IonCardTitle, IonTitle, IonContent, IonLabel, IonList, IonItem, IonCard, IonInput, IonSpinner, IonButtons, IonButton, IonIcon, IonImg, IonCol, IonRow, IonBackButton, IonGrid } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { IoniconsModule } from '../../common/modules/ionicons.module';
 import { FirestoreService } from 'src/app/common/services/firestore.service';
@@ -9,6 +9,7 @@ import { AlertController, IonicModule } from '@ionic/angular';
 import * as bcrypt from 'bcryptjs';
 import { Auth } from '@angular/fire/auth';
 import { UserI } from 'src/app/common/models/users.models';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -20,12 +21,16 @@ import { UserI } from 'src/app/common/models/users.models';
     IonIcon, IonButton, IonButtons, IonSpinner, IonInput, IonCard,
     FormsModule,
     IoniconsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent
   ],
 })
 export class PerfilComponent  implements OnInit {
 
-    user: UserI | undefined;
+  user: UserI | undefined;
   userId: string | null = null;
 
   constructor(  private firestoreService: FirestoreService,

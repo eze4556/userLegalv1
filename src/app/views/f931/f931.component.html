@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">F931</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <ion-row *ngIf="pdfs?.length">
+      <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs">
+        <ion-card class="pdf-card">
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">{{ pdf.id }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="ion-text-center">
+            <ion-button (click)="verPdf(pdf.pdfUrl)" color="success" expand="block">
+              Ver PDF
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-card *ngIf="!pdfs?.length" class="no-pdfs-card">
+      <ion-card-content>
+        <p>No hay PDFs de F931 disponibles.</p>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="!pdfs" class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando F931...</p>
+    </div>
+  </ion-grid>
+</ion-content>

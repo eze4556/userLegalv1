@@ -1,0 +1,41 @@
+ion-content {
+  --background: hsla(24, 100%, 1%, 0.966); // Color de fondo gris claro
+}
+
+// ion-content {
+//   --background: none; /* Quita el color de fondo para usar la imagen */
+//   background: url('../../../assets/LOGO-WEB.webp') ;
+//   background-size: contain;
+//   opacity: 0.8; /* Ajusta la opacidad para que la imagen sea sutil */
+// }
+
+
+.pdf-card {
+  margin-bottom: 10px;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px; // Bordes redondeados
+}
+
+.no-pdfs-card {
+  background-color: #f8d7da; // Fondo rojo claro
+  color: #721c24;             // Color de texto rojo oscuro
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 576px) {
+  .pdf-card {
+    height: auto;
+    width: 100%;
+  }
+}

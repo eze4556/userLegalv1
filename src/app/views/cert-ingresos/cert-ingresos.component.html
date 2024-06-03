@@ -1,28 +1,36 @@
-<ion-content>
-  <ion-grid>
-    <ion-row>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Certificación de Ingresos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid fixed>
+    <!-- <ion-row>
       <ion-col size="12">
-        <h2>Certificación de Ingresos</h2>
+        <h2 class="text-center mb-4">Certificación de Ingresos</h2>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
     <ion-row>
-      <ion-col *ngFor="let year of uniqueYears" size="6" size-md="3">
-        <ion-card (click)="onYearClick(year)">
-          <ion-card-header>
-            <ion-card-title>{{ year }}</ion-card-title>
+      <ion-col size="6" size-md="3" *ngFor="let year of uniqueYears">
+        <ion-card (click)="onYearClick(year)" class="year-card">
+          <ion-card-header class="year-card-header">
+            <ion-card-title class="ion-text-center">{{ year }}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="pdfs$ | async as pdfs">
-      <ion-col *ngFor="let pdf of pdfs" size="12">
-        <ion-card>
-          <ion-card-content>
-            <a [href]="pdf.pdf" target="_blank">Ver PDF</a>
+      <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs">
+        <ion-card class="pdf-card">
+          <ion-card-content class="pdf-card-content">
+            <a [href]="pdf.pdf" target="_blank" class="pdf-link">Ver PDF</a>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-

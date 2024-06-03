@@ -154,7 +154,6 @@ export class FirestoreService {
 
         if(password === user.password){
           localStorage.setItem('userId', user.id);
-           localStorage.setItem('userDni', user.dni);
           const validPassword = true
           console.log('Password comparison result:', validPassword);
           return user
@@ -178,6 +177,106 @@ export class FirestoreService {
     }
   }
 
+// Recuperar datos del usuario por ID
+  async getUserData(userId: string): Promise<UserI | undefined> {
+    try {
+      const userDocRef = doc(this.firestore, `Usuarios/${userId}`).withConverter(converter<UserI>());
+      const userDocSnap = await getDoc(userDocRef);
+      return userDocSnap.exists() ? userDocSnap.data() : undefined;
+    } catch (error) {
+      console.error("Error al recuperar los datos del usuario:", error);
+      throw error;
+    }
+  }
+
+
+ async getUniqueYears(userId: string): Promise<string[]> {
+    const certIngresoCollection = collection(this.firestore, `Usuarios/${userId}/certIngreso`);
+    const querySnapshot = await getDocs(certIngresoCollection);
+
+    const yearsSet = new Set<string>();
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data && data['anio']) {
+        yearsSet.add(data['anio']);
+      }
+    });
+
+    return Array.from(yearsSet);
+  }
+
+  getCertificacionIngresosByYear(userId: string, year: string): Observable<any[]> {
+    const certIngresoCollection = collection(this.firestore, `Usuarios/${userId}/certIngreso`);
+    const q = query(certIngresoCollection, where('anio', '==', year));
+    return collectionData(q, { idField: 'id' }) as Observable<any[]>;
+  }
+
+
+// Obtener datos de AFIP
+  async getAfip(userId: string): Promise<any> {
+    try {
+      const afipCollectionRef = collection(this.firestore, `Usuarios/${userId}/AFIP`);
+      const querySnapshot = await getDocs(afipCollectionRef);
+
+      if (!querySnapshot.empty) {
+        const afipDoc = querySnapshot.docs[0];
+        return afipDoc.data();
+      } else {
+        console.log('No se encontraron datos de AFIP para el usuario');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error al obtener los datos de AFIP:', error);
+      throw error;
+    }
+  }
+
+
+
+ // Obtener PDFs de declaración jurada en orden
+  async getDeclaracionJuradaPDFs(userId: string): Promise<any[]> {
+    try {
+      const declaracionJuradaCollectionRef = collection(this.firestore, `Usuarios/${userId}/declaracionJurada`);
+      const q = query(declaracionJuradaCollectionRef);
+      const querySnapshot = await getDocs(q);
+
+      const pdfs = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      return pdfs;
+    } catch (error) {
+      console.error('Error al obtener los PDFs de declaración jurada:', error);
+      throw error;
+    }
+  }
+
+
+ async getF931(userId: string): Promise<any[]> {
+    try {
+      const f931CollectionRef = collection(this.firestore, `Usuarios/${userId}/f931`);
+      const querySnapshot = await getDocs(f931CollectionRef);
+
+      const pdfs = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      return pdfs;
+    } catch (error) {
+      console.error('Error al obtener los PDFs de F931:', error);
+      throw error;
+    }
+  }
+
+
+
+
 
 
 }
+
+
+
+

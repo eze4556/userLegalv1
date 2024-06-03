@@ -1,0 +1,31 @@
+ion-content {
+  --background: #f4f5f8; // Color de fondo gris claro
+}
+
+.afip-card {
+  margin: 20px auto;
+  width: 90%;  // Ajusta el ancho de la tarjeta para que sea responsivo
+  max-width: 500px; // Limita el ancho máximo de la tarjeta
+}
+
+.afip-card-header {
+  background-color: #3880ff;
+  color: white;
+}
+
+.afip-card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.afip-card-content {
+  padding: 20px;
+}
+
+.afip-label {
+  font-weight: bold;
+}
+
+.afip-value {
+  text-align: end;  // Alinea el valor a la derecha
+}

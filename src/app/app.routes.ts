@@ -18,8 +18,19 @@ export const routes: Routes = [
     path: 'perfil',
     loadComponent: () => import('../app/views/perfil/perfil.component').then((m) => m.PerfilComponent),
   },
+  {
+    path: 'afip',
+    loadComponent: () => import('../app/views/afip/afip.component').then((m) => m.AfipComponent),
+  },
+ {
+    path: 'declaracion',
+    loadComponent: () => import('../app/views/declaracion/declaracion.component').then((m) => m.DeclaracionComponent),
+  },
 
-
+   {
+    path: 'F931',
+    loadComponent: () => import('../app/views/f931/f931.component').then((m) => m.F931Component),
+  },
 
 
   {

@@ -1,0 +1,61 @@
+ion-content {
+  --background: #f4f5f8; // Color de fondo gris claro
+}
+.year-card {
+  height: 150px;
+  --border-radius: 8px; // Bordes redondeados
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.year-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.year-card-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;  // Ajusta el tamaño de fuente
+}
+
+.pdf-card {
+  margin-bottom: 10px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.pdf-card-content {
+  padding: 16px;
+}
+
+.pdf-link {
+  display: block;
+  text-align: center;
+  color: #3880ff;
+  text-decoration: none;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-col {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente los elementos */
+  margin-bottom: 10px;   /* Agrega un margen inferior para separar las filas */
+}
+
+
+@media (max-width: 576px) {
+  .button-square {
+    height: 100px;
+    font-size: 1rem;
+  }
+}
+

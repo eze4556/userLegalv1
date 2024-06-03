@@ -1,0 +1,10 @@
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Espacio entre el logo y el formulario */
+  }
+
+  ion-img {
+    width: 220px; /* Ajusta el tamaño del logo según necesites */
+    height: auto;
+  }
