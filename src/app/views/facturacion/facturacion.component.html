@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -8,15 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <ion-card *ngFor="let doc of facturacionDocs$ | async">
-    <ion-card-header>
-      <ion-card-title>Factura: {{ doc.facturas }}</ion-card-title>
+  <ion-card *ngFor="let doc of facturacionDocs$ | async" class="facturacion-card">
+    <ion-card-header class="facturacion-card-header">
+      <ion-card-title class="facturacion-card-title">Factura: {{ doc.facturas }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="facturacion-card-content">
       <div *ngIf="doc.pdf">
-        <a [href]="doc.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+        <a [href]="doc.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">Abrir PDF</a>
       </div>
       <div *ngIf="!doc.pdf">
         <p>No hay PDF disponible</p>
