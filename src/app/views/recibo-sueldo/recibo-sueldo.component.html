@@ -1,24 +1,20 @@
-
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Recibos de Sueldo</ion-title>
+    <ion-title class="ion-text-center" style="color: #ffffff;">Recibos de Sueldo</ion-title> <!-- Aseguramos que el texto sea completamente blanco -->
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content>
-  <ion-card *ngFor="let doc of reciboSueldoDocs$ | async">
-    <ion-card-header>
-      <ion-card-title>Recibo de Sueldo: {{ doc.mes }}/{{ doc.anio }}</ion-card-title>
+  <ion-card *ngFor="let doc of reciboSueldoDocs$ | async" class="recibo-sueldo-card">
+    <ion-card-header class="recibo-sueldo-card-header">
+      <ion-card-title class="recibo-sueldo-card-title">Recibo de Sueldo: {{ doc.mes }}/{{ doc.anio }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="recibo-sueldo-card-content">
       <div *ngIf="doc.pdf">
-        <a [href]="doc.pdf" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+        <a [href]="doc.pdf" target="_blank" rel="noopener noreferrer" class="pdf-link">Abrir PDF</a>
       </div>
       <div *ngIf="!doc.pdf">
         <p>No hay PDF disponible</p>

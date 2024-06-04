@@ -1,8 +1,39 @@
-ion-card {
-  margin-bottom: 16px;
+ion-content {
+  --background: hsla(24, 100%, 1%, 0.966); // Color de fondo gris claro
 }
 
-.pdf-viewer {
-  margin-top: 16px;
-  height: 500px; // Ajusta según sea necesario
+.plan-pago-card {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 500px;
+}
+
+.plan-pago-card-header {
+  background-color: #CFB53B;
+  color: white;
+}
+
+.plan-pago-card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #ffffff; /* Aseguramos que el texto sea completamente blanco */
+}
+
+.plan-pago-card-content {
+  padding: 20px;
+}
+
+.pdf-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #CFB53B;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.pdf-link:hover {
+  background-color: darken(#CFB53B, 10%);
 }

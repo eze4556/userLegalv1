@@ -1,43 +1,41 @@
 ion-content {
-  --background: #f4f5f8; // Color de fondo gris claro
-}
-.year-card {
-  height: 150px;
-  --border-radius: 8px; // Bordes redondeados
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  --background: hsla(24, 100%, 1%, 0.966); /* Color de fondo gris claro */
 }
 
-.year-card:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+.certificacion-card {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 500px;
 }
 
-.year-card-header {
-  text-align: center;
+.certificacion-card-header {
+  background-color: #CFB53B;
+  color: white;
+}
+
+.certificacion-card-title {
   font-weight: bold;
-  font-size: 1.5rem;  // Ajusta el tamaño de fuente
+  font-size: 1.2rem;
+  color: #ffffff;
 }
 
-.pdf-card {
-  margin-bottom: 10px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.pdf-card-content {
-  padding: 16px;
+.certificacion-card-content {
+  padding: 20px;
 }
 
 .pdf-link {
-  display: block;
-  text-align: center;
-  color: #3880ff;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #CFB53B;
+  color: white;
   text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.pdf-link:hover {
+  background-color: darken(#CFB53B, 10%);
 }
 
 ion-grid {
@@ -48,14 +46,19 @@ ion-col {
   display: flex;
   align-items: center;
   justify-content: center; /* Centra horizontalmente los elementos */
-  margin-bottom: 10px;   /* Agrega un margen inferior para separar las filas */
+  margin-bottom: 10px; /* Agrega un margen inferior para separar las filas */
 }
 
+.year-select {
+  width: 100%; /* Ajusta el ancho del selector */
+}
 
 @media (max-width: 576px) {
-  .button-square {
-    height: 100px;
-    font-size: 1rem;
+  .certificacion-card {
+    height: 150px;
+    font-size: 1.5rem;
+  }
+  .pdf-link {
+    padding: 5px 10px;
   }
 }
-
