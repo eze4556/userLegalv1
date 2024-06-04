@@ -8,8 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let doc of planPagoDocs$ | async" class="plan-pago-card">
-    <ion-card-header class="plan-pago-card-header">
+
+ <div *ngIf="(planPagoDocs$ | async) === null" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Cargando planes de pago...</p>
+  </div>
+
+
+<ion-card *ngFor="let doc of planPagoDocs$ | async" class="plan-pago-card">
+    <ion-card-header  class="plan-pago-card-header">
       <ion-card-title class="plan-pago-card-title">Plan de Pago: {{ doc.plan }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="plan-pago-card-content">
@@ -22,3 +29,5 @@
     </ion-card-content>
   </ion-card>
 </ion-content>
+
+

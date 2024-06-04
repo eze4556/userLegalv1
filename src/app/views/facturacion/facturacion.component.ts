@@ -1,4 +1,4 @@
-import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/angular/standalone';
+import { IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonSpinner, IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from '../../common/services/firestore.service';
@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './facturacion.component.html',
   styleUrls: ['./facturacion.component.scss'],
   standalone: true,
-  imports: [IonTitle, IonBackButton, IonButtons, IonToolbar, IonHeader, CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
+  imports: [IonRow, IonCol, IonGrid, IonSpinner, IonTitle, IonBackButton, IonButtons, IonToolbar, IonHeader, CommonModule, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent]
 })
 export class FacturacionComponent implements OnInit {
   facturacionDocs$: Observable<any[]>;
@@ -24,7 +24,7 @@ export class FacturacionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = localStorage.getItem('userId'); // Asume que el userId se almacena en localStorage
+    this.userId = localStorage.getItem('userId');
     this.loadFacturacion();
   }
 
@@ -32,6 +32,9 @@ export class FacturacionComponent implements OnInit {
     const path = `Usuarios/${this.userId}/facturacion`;
     this.facturacionDocs$ = this.firestoreService.getCollectionChanges(path);
   }
+
+
+
 
   getSanitizedUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);

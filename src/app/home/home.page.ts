@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonHeader, IonToolbar, IonChip,IonAvatar,  IonTitle, IonContent, IonLabel, IonList, IonItem, IonCard, IonInput, IonSpinner, IonButtons, IonButton, IonIcon, IonImg, IonCol, IonRow, IonBackButton, IonGrid } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { IoniconsModule } from '../common/modules/ionicons.module';
@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
     IonAvatar
   ],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
 
 
@@ -35,6 +35,10 @@ export class HomePage {
 
 
   }
+
+
+
+
 
    async logout() {
 
@@ -96,8 +100,22 @@ navigateToAfip() {
     this.userId = localStorage.getItem('userId');
     if (this.userId) {
       this.user = await this.firestoreService.getUserData(this.userId);
+      await this.mostrarAlertaBienvenida(this.user.nombre);
     }
   }
+
+
+async mostrarAlertaBienvenida(nombre: string) {
+    const alert = await this.alertController.create({
+      header: '¡Bienvenidx!',
+      message: `Hola, ${nombre}!`,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+
 }
 
 
