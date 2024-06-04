@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center" style="color: #ffffff;">Certificación de Ingresos</ion-title> <!-- Aseguramos que el texto sea completamente blanco -->
+    <ion-title class="ion-text-center" style="color: #ffffff;">Certificación de Ingresos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
-        <ion-item>
+        <ion-item class="year-select-item">
           <ion-label>Seleccione un año</ion-label>
           <ion-select [(ngModel)]="selectedYear" (ionChange)="onYearChange($event)" class="year-select">
             <ion-select-option *ngFor="let year of uniqueYears" [value]="year">{{ year }}</ion-select-option>
@@ -29,11 +29,7 @@
             <ion-grid>
               <ion-row>
                 <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs$ | async">
-                  <ion-card class="certificacion-card">
-                    <ion-card-content class="certificacion-card-content">
-                      <a [href]="pdf.pdf" target="_blank" class="pdf-link">Ver PDF</a>
-                    </ion-card-content>
-                  </ion-card>
+                  <a [href]="pdf.pdf" target="_blank" class="pdf-link">Ver PDF</a>
                 </ion-col>
               </ion-row>
             </ion-grid>
