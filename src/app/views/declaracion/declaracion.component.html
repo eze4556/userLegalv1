@@ -1,5 +1,6 @@
 <ion-header>
-  <ion-toolbar color="primary"> <ion-buttons slot="start">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center">Declaraciones Juradas</ion-title>
@@ -7,12 +8,15 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-grid fixed> <ion-row *ngIf="pdfs?.length">
-      <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs"> <ion-card class="pdf-card">  <ion-card-header>
-            <ion-card-title class="ion-text-center">{{ pdf.pdf }}</ion-card-title> </ion-card-header>
-          <ion-card-content class="ion-text-center">
-            <ion-button (click)="verPdf(pdf.pdf)" color="success" expand="block"> Ver PDF
-            </ion-button>
+  <ion-grid fixed>
+    <ion-row *ngIf="pdfs?.length">
+      <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs">
+        <ion-card class="plan-pago-card">
+          <ion-card-header class="plan-pago-card-header">
+            <ion-card-title class="plan-pago-card-title ion-text-center">PDF de declaracion Jurada</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="plan-pago-card-content ion-text-center">
+            <a [href]="pdf.pdf" target="_blank" class="pdf-link">Ver PDF</a>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -23,5 +27,10 @@
         <p>No hay PDFs de Declaraciones Juradas disponibles.</p>
       </ion-card-content>
     </ion-card>
+
+    <div *ngIf="!pdfs" class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando Declaraciones Juradas...</p>
+    </div>
   </ion-grid>
 </ion-content>
