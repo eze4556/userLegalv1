@@ -3,9 +3,15 @@ ion-content {
 }
 
 .certificacion-card {
-  margin: 20px auto;
+  margin: 10px auto; /* Reducir el margen superior e inferior */
+  padding: 15px;
   width: 90%;
   max-width: 500px;
+  overflow-y: auto;
+}
+
+ion-grid, ion-row {
+  height: auto; /* Permitir que la altura se ajuste al contenido */
 }
 
 .certificacion-card-header {
@@ -20,7 +26,9 @@ ion-content {
 }
 
 .certificacion-card-content {
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap; 
 }
 
 .pdf-link {
@@ -30,7 +38,7 @@ ion-content {
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
   width: 100%; /* Ensure the link button takes full width */
 }

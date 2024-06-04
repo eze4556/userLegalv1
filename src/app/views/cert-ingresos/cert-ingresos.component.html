@@ -4,6 +4,7 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title class="ion-text-center" style="color: #ffffff;">Certificación de Ingresos</ion-title>
+    <ion-title class="ion-text-center" style="color: #ffffff;">Certificación de Ingresos</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -19,13 +20,15 @@
         </ion-item>
       </ion-col>
     </ion-row>
+
     <ion-row *ngIf="selectedYear">
       <ion-col size="12">
         <ion-card class="certificacion-card">
           <ion-card-header class="certificacion-card-header">
             <ion-card-title class="certificacion-card-title ion-text-center">PDFs del Año {{ selectedYear }}</ion-card-title>
           </ion-card-header>
-          <ion-card-content class="certificacion-card-content">
+
+
             <ion-grid>
               <ion-row>
                 <ion-col size="12" size-md="6" *ngFor="let pdf of pdfs$ | async">
@@ -33,7 +36,7 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-card-content>
+
         </ion-card>
       </ion-col>
     </ion-row>

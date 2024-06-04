@@ -10,21 +10,22 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card *ngIf="afip" class="afip-card">
-    <ion-card-header class="afip-card-header">
-      <ion-card-title class="afip-card-title">Detalles del Usuario AFIP</ion-card-title>
+  <ion-card *ngIf="afip" class="profile-card">
+    <ion-card-header class="profile-card-header">
+      <ion-card-title >Detalles del Usuario AFIP</ion-card-title>
     </ion-card-header>
-    <ion-card-content class="afip-card-content">
-      <ion-list lines="none">
+
+    <ion-card-content class="profile-card-content">
+
         <ion-item>
-          <ion-label class="afip-label">CUIT:</ion-label>
-          <ion-label class="afip-value">{{ afip.cuit }}</ion-label>
+          <ion-label class="label">CUIT:</ion-label>
+          <ion-label >{{ afip.cuit }}</ion-label>
         </ion-item>
         <ion-item>
-          <ion-label class="afip-label">Clave Fiscal:</ion-label>
-          <ion-label class="afip-value">{{ afip.claveFiscal }}</ion-label>
+          <ion-label class="label">Clave Fiscal:</ion-label>
+          <ion-label >{{ afip.claveFiscal }}</ion-label>
         </ion-item>
-      </ion-list>
+
     </ion-card-content>
   </ion-card>
 

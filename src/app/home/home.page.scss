@@ -4,29 +4,35 @@ ion-grid {
 
 .button-square {
   --border-radius: 8px;
-  height: auto;  /* Permitir que la altura se ajuste al contenido */
-  width: 100%; /* Ocupar todo el ancho de la columna */
+  height: auto;
+  width: 100%;
   font-size: 1.2rem;
-  display: flex; /* Usar flexbox para centrar el contenido */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal; /* Permite que el texto se divida en varias líneas */
+  text-align: center;  /* Alinea el texto al centro */
 }
 
 ion-col {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  margin-bottom: 10px;
+  padding: 5px; // Agrega un padding a las columnas para espacio entre botones
 }
 
-
-@media (max-width: 576px) {
+@media (max-width: 576px) { /* Para pantallas pequeñas (móviles) */
   .button-square {
-    height: 100px;
-    font-size: 1rem;
+    height: auto; /* Permite que la altura se ajuste al contenido en pantallas pequeñas */
+    font-size: 0.9rem; // Reduce el tamaño de fuente en pantallas pequeñas
   }
 }
 
+@media (max-width: 576px) { /* Para pantallas pequeñas (móviles) */
+  ion-col[size-sm="12"] { /* Aplicar estilos solo a las columnas de ancho completo en pantallas pequeñas */
+    margin-bottom: 10px; // Agrega un margen inferior para separar las filas
+  }
+}
 
 ion-chip {
  --padding-start: 6px;  /* Reduce el padding inicial */
@@ -46,4 +52,13 @@ ion-avatar {
 
 ion-icon {
   font-size: 24px; // Ajusta el tamaño del icono como prefieras
+}
+
+.large-avatar {
+  width: 40px;
+  height: 40px;
+  --border-radius: 50%;
+  --border-width: 2px;
+  --border-style: solid;
+  --border-color: var(--ion-color-primary);
 }
