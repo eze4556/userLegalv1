@@ -40,6 +40,7 @@ ion-grid, ion-row {
   border-radius: 5px;
   margin-top: 5px;
   text-align: center;
+  width: 100%; /* Ensure the link button takes full width */
 }
 
 .pdf-link:hover {
@@ -53,17 +54,21 @@ ion-grid {
 ion-col {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra horizontalmente los elementos */
-  margin-bottom: 10px; /* Agrega un margen inferior para separar las filas */
+  justify-content: center; /* Center elements horizontally */
+  margin-bottom: 10px; /* Add bottom margin to separate rows */
+}
+
+.year-select-item {
+  width: 100%; /* Ensure the ion-item takes full width */
 }
 
 .year-select {
-  width: 100%; /* Ajusta el ancho del selector */
+  width: 100%; /* Adjust width of the select */
 }
 
 @media (max-width: 576px) {
   .certificacion-card {
-    height: 150px;
+    height: auto; /* Allow the card to grow vertically */
     font-size: 1.5rem;
   }
   .pdf-link {
